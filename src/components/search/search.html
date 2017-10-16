@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Поиск
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row justify-content-center>
+    <ion-col col-xs>
+      <ion-searchbar [showCancelButton]="shouldShowCancel" [(ngModel)]="sInput" placeholder="Что ищем?"></ion-searchbar>
+    </ion-col>
+  </ion-row>
+
+  <ion-row justify-content-left>
+    <ion-col col-xs>
+      <ion-item>
+        <ion-label>Номер заявки</ion-label>
+        <ion-checkbox checked="true"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Исполнитель</ion-label>
+        <ion-checkbox checked="true"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Название заявки</ion-label>
+        <ion-checkbox checked="true"></ion-checkbox>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+    
+  <ion-row justify-content-center>
+    <ion-col col-xs>
+      <button ion-button icon-start block (click)="searchOrder()">
+      	<ion-icon name="search"></ion-icon>
+          Найти заявку
+      </button>
+    </ion-col>
+  </ion-row>
+  <br>
+<hr>
+      <br>
+      
+   <ion-list>
+    <button ion-item *ngIf="sClick==true">
+      <ion-row justify-content-center>
+        <ion-col col-4>
+          Заявка
+        </ion-col>
+
+        <ion-col col-8>
+          <div>
+            [(names)]="sInput"
+          </div>
+          <div>Инициатор: 123</div>
+          <div>Статус: 123</div>
+          <div>Срочность: 123</div>
+
+
+           <a href="#" ion-item color="white" *ngFor="let task of tasks" (click)="itemTapped($event, task.id, task.usageType)" >
+              <h2>{{task.subject}}</h2>
+              <p>Номер: {{task.id}}</p>
+              <p>Дата: {{task.created}}</p>
+              <p>Инициатор: {{task.owner.fio}}</p>
+              <p>Кому назначена: {{task.executor.fio}}</p>
+              <p>Статус: {{task.status.status}}</p>
+              <span *ngIf="task.urgency.urgency">
+                <p>Срочность: {{task.urgency.urgency}}</p>
+              </span>
+            </a>
+        </ion-col>
+      </ion-row>
+    </button>
+  </ion-list>
+
+ 
+
+    
+</ion-content>

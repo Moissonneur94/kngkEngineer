@@ -1,0 +1,63 @@
+<ion-header class="body">
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Настройки
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-refresher  (ionPull)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+<br /><br />
+<!-- Generated template for the SettingsComponent component -->
+
+
+<ion-list>
+<br>
+  <ion-item>
+    <ion-label>Услуги</ion-label>
+    <ion-select [(ngModel)]="Keys" interface="popover" placeholder="Выберите услугу" (ionChange)="Category($event)"> 
+      <ion-option *ngFor="let s of service" [value]="s.keys">{{s.name}} </ion-option>
+    </ion-select>
+  </ion-item>
+
+<br>
+    
+  <ion-item >
+    <ion-label>Категории</ion-label>
+    <ion-select [(ngModel)]="CatId" interface="popover" placeholder="Выберите категорию">
+      <ion-option *ngFor="let sc of serviceCat[0]" [value]="sc.id">{{sc.name}}</ion-option>
+    </ion-select>
+   </ion-item>
+
+</ion-list>  
+
+{{id}}
+{{CatId}}
+
+<hr>
+<div *ngFor="let s of service">{{s.category[0].id}}</div> 
+<hr>
+<div *ngFor="let s of serviceCat[0]">{{s.id}}</div>
+
+<hr>
+<div *ngFor="let s of serviceCat[0]">{{s.typeCategory}}</div>
+<!-- <ion-list>
+  <ion-item>
+    
+    <ion-input type="number" [(ngModel)]="Keys"></ion-input>
+  </ion-item>
+
+  
+</ion-list> -->
+</ion-content>

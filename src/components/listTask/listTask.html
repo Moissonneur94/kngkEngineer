@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Все заявки
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Нажмите вниз чтобы обновить..."
+      refreshingSpinner="circles"
+      refreshingText="Обновление..."
+    ></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-item>
+    <ion-label>В работе</ion-label>
+    <ion-checkbox color="blue" [(ngModel)]="inWork" (click)="getTask()"></ion-checkbox>
+  </ion-item>
+
+  <a href="#" ion-item color="white" *ngFor="let task of tasks" (click)="itemTapped($event, task.id, task.usageType)" >
+    <h2>{{task.subject}}</h2>
+    <p>Номер: {{task.id}}</p>
+    <p>Дата: {{task.created}}</p>
+    <p>Инициатор: {{task.owner.fio}}</p>
+    <p>Кому назначена: {{task.executor.fio}}</p>
+    <p>Статус: {{task.status.status}}</p>
+    <span *ngIf="task.urgency.urgency">
+      <p>Срочность: {{task.urgency.urgency}}</p>
+    </span>
+
+   <!--  <div padding [innerHTML]="task.body"></div> -->
+    <!-- <div > {{task.usageType}}</div> -->
+    <!-- <div> {{task.service.avatar}}</div> -->
+  </a>
+
+  
+
+</ion-content>

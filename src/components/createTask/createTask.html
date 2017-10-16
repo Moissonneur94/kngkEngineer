@@ -1,0 +1,76 @@
+<ion-header class="body">
+
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Создать заявку
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <!-- <ion-refresher  (ionPull)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher> -->
+<br>
+ <ion-list>
+  
+  <ion-item>
+    <ion-label>Услуги</ion-label>
+    <ion-select [(ngModel)]="Keys" interface="popover" placeholder="Выберите услугу" (ionChange)="Category($event)"> 
+      <ion-option *ngFor="let s of service" [value]="s.keys" >{{s.name}} </ion-option>
+    </ion-select>
+  </ion-item>
+   <br>
+  <ion-item >
+    <ion-label>Категории</ion-label>
+    <ion-select [(ngModel)]="CatId" interface="popover" placeholder="Выберите категорию">
+      <ion-option *ngFor="let sc of serviceCat[0]" [value]="sc.id">{{sc.name}}</ion-option>
+    </ion-select>
+   </ion-item>
+
+  
+
+  <ion-item>
+    <ion-label color="primary" stacked><label for="subject">Тема заявки</label></ion-label>
+    <ion-input type="user" [(ngModel)]="subjectTask" required placeholder="Тема заявки"></ion-input>
+  </ion-item>
+
+ </ion-list>
+    <ion-label color="primary" stacked><label for="body">Введите текст вашей заявки</label></ion-label>
+    <text-editor [formControlItem]="item"></text-editor>
+  
+<br>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6>
+        <button ion-button block color="secondary" submit icon-start (click)="CreateTask($event, item.value, subjectTask)">
+          <ion-icon name="checkmark-circle" item-left></ion-icon>
+          Создать
+        </button>
+      </ion-col>
+ <!--    </ion-row>
+
+    <ion-row -->
+      <ion-col col-6>
+        <button ion-button block color="danger" (click)="CloseOrder()">
+          <ion-icon name="checkmark-circle" item-left></ion-icon>
+          Отмена
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <hr>
+
+  
+
+  <!-- <div padding [innerHTML]="item.value"></div>
+  <div >{{typeCat}}</div> -->
+
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Домашняя страница
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let p of pages">
+      <ion-col col-12>
+        <button ion-button large block (click)="openPage(p)">{{p.title}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
