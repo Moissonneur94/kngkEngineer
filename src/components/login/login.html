@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <hr>
     <ion-title class="">Вход</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,17 +8,33 @@
 <ion-content>
 
   <ion-item>
-    <ion-label color="primary" stacked><label for="user">Пользователь</label></ion-label>
+    <ion-label color="primary" stacked>
+      <label for="user">Пользователь</label>
+    </ion-label>
     <ion-input type="user" [(ngModel)]="user" required placeholder="Пользователь"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label color="primary" stacked><label for="password">Пароль</label></ion-label>
+    <ion-label color="primary" stacked>
+      <label for="password">Пароль</label>
+    </ion-label>
     <ion-input type="password" [(ngModel)]="password" required placeholder="Пароль"></ion-input>
   </ion-item>
 
-  <div padding *ngIf="errorText">
+  <div>
+    <ion-item>
+      <ion-label>Запомнить меня</ion-label>
+      <ion-checkbox color="dark" [(ngModel)]="saveUser"></ion-checkbox>
+    </ion-item>
+  </div>
+  <br>
+  <br>
 
+  <div padding>
+    <button ion-button submit block (click)="userLogin()">Вход</button>
+  </div>
+
+  <div padding *ngIf="errorText">
     <ion-card>
       <ion-card-header class="danger">
         {{errorHeader}}
@@ -26,34 +43,6 @@
         {{errorText}}
       </ion-card-content>
     </ion-card>
-    
   </div>
-
-  <div>
-    <ion-item>
-      <ion-label>Запомнить меня</ion-label>
-      <ion-checkbox color="dark" [(ngModel)]="saveUser"></ion-checkbox>
-    </ion-item>
-  </div>
-  <br><br>
-
-  <div padding>
-    <button ion-button submit block (click)="userLogin()">Вход</button>
-  </div>
-
-   <!-- <div>
-    <ion-item>
-      <ion-label>Debug mode</ion-label>
-      <ion-checkbox color="dark" [(ngModel)]="debugMode"></ion-checkbox>
-    </ion-item>
-
-    <div *ngIf="debug">
-      <ion-card>
-        <ion-card-content>
-          {{debugText}}
-        </ion-card-content>
-      </ion-card>
-    </div>
-  </div> -->
 
 </ion-content>

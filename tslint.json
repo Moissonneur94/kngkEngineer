@@ -1,11 +1,17 @@
 {
   "rules": {
     "no-duplicate-variable": true,
-    "no-unused-variable": [
-      true
-    ]
+    "no-console": false,
+    "no-debugger": false,
+    "no-this-assignment": false,
+    "member-ordering": false,
+    "array-type": false,
+    "no-string-literal": false,
+    "ordered-imports": false,
+    "no-submodule-imports": false,
+    "object-literal-sort-keys": false,
+    "no-unused-variable": [true]
   },
-  "rulesDirectory": [
-    "node_modules/tslint-eslint-rules/dist/rules"
-  ]
+  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "rulesDirectory": ["node_modules/tslint-eslint-rules/dist/rules"]
 }

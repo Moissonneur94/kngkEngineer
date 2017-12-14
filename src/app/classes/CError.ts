@@ -1,10 +1,9 @@
 export class CError {
+  public faultheader: string;
+  public faultstring: string;
 
-  faultheader: string;
-  faultstring: string;
-
-	constructor(object: Object) {
+  constructor(object: object) {
     this.faultheader = object["faultheader"];
     this.faultstring = object["faultstring"];
-	}
+  }
 }

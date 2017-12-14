@@ -1,12 +1,7 @@
 export class CUrgency {
-	
-	urgency: string;
-	
-  constructor(object: Object) {
-    this.urgency = (undefined !== object["urgency"])? object["urgency"] : "";
+  public urgency: string;
+
+  constructor(object: object) {
+    this.urgency = undefined !== object["urgency"] ? object["urgency"] : "";
   }
-
-	onChange() {
-
-	}
 }

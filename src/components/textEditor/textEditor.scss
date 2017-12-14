@@ -1,5 +1,5 @@
 text-editor {
-    *[contenteditable] {
+    [contenteditable=true] {
         -webkit-user-select: auto !important;
         padding: 2px;
         margin: 2px;
@@ -7,9 +7,17 @@ text-editor {
         overflow-x: scroll;
         overflow-y: auto;
         word-wrap: normal;
+        height: 20vh;
         img {
             padding-left: 2px;
             max-width: 95%;
+        }
+        background-color: #fff;
+        &:empty:before {
+            content: attr(data-placeholder-text);
+            display: block;
+            color: lightgrey;
+            font-weight: bold;
         }
     }
     div.decorator {
@@ -26,10 +34,5 @@ text-editor {
             padding-right: 1px;
         }
     }
-    .maineditor {
-        background-color: #fff;
-    }
-
-    margin: 50px 10px 50px 10px;
-
+   
 }

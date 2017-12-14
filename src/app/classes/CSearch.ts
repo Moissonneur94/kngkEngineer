@@ -1,10 +1,10 @@
 export class CSearch {
-  sResult: string;
-  type: string;
-  FoundText: string;
-  code: string;
+  public sResult: string;
+  public type: string;
+  public FoundText: string;
+  public code: string;
 
-  constructor(object: Object) {
+  constructor(object: object) {
     this.sResult = object["sResult"];
     this.type = object["type"];
     this.FoundText = object["FoundText"];

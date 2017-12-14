@@ -14,3 +14,16 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+ion-label h2 {
+
+  white-space: normal;
+}
+
+ .leftimg {
+    float:left; /* Выравнивание по левому краю */
+    margin: 2px 7px 7px 0; /* Отступы вокруг картинки */
+    width: 70px;
+    height: 65px;
+    object-fit: contain;
+   }

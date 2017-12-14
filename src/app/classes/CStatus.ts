@@ -1,12 +1,7 @@
 export class CStatus {
+  public status: string;
 
-	status: string;
-
-  constructor(object: Object) {
+  constructor(object: object) {
     this.status = object["status"];
   }
-
-	onChange() {
-		
-	}
 }

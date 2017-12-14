@@ -1,18 +1,15 @@
 export class CCategory {
+  public id: string;
+  public avatar: string;
+  public name: string;
+  public serviceOwner: string;
+  public typeCategory: string;
 
-  id: string;
-  avatar: string;
-  name: string;
-  serviceOwner: string;
-  typeCategory: string;
-
-
-  constructor(object: Object) {
+  constructor(object: object) {
     this.avatar = object["avatar"];
     this.id = object["id"];
     this.name = object["name"];
     this.serviceOwner = object["serviceOwner"];
     this.typeCategory = object["typeCategory"];
   }
-
 }

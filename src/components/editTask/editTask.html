@@ -1,5 +1,4 @@
 <ion-header class="body">
-
   <ion-navbar>
     <button ion-button menuToggle icon-only>
       <ion-icon name="menu"></ion-icon>
@@ -13,80 +12,84 @@
 
 <ion-content>
 
-   <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="Нажмите вниз чтобы обновить..."
-      refreshingSpinner="circles"
-      refreshingText="Обновление..."
-    ></ion-refresher-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Нажмите вниз чтобы обновить..." refreshingSpinner="circles"
+      refreshingText="Обновление..."></ion-refresher-content>
   </ion-refresher>
 
-	<ion-toolbar >
-    <div *ngFor="let task of taskD" >
-    {{task.id}}
-    <p><b>Тема: </b>{{task.subject}}</p>
-    <p><b>Инициатор:</b> {{task.owner.fio}}</p>
-    <p><b>Телефон:</b> {{task.owner.telephone}}
-    <p><b>Статус:</b> {{task.status.status}}</p>
-    <span *ngIf="task.urgency.urgency">
-      <p><b>Срочность:</b> {{task.urgency.urgency}}</p>
-    </span>
-    <p><b>Дата и время:</b> {{task.created}} </p>
+  <ion-toolbar>
+    <div *ngFor="let task of taskD">
+      {{task.id}}
+      <p>
+        <b>Тема: </b>{{task.subject}}</p>
+      <p>
 
-    <!-- <p><b>Инициатор2:</b> {{task.executor.fio}}</p> -->
+        <img src="data:image/jpg;base64,{{task.owner.avatar}}" width="100" heigth="100" class="leftimg">
+        <b>Инициатор:</b> {{task.owner.fio}}<br>
+        <b>Организация:</b> {{task.owner.company}}<br>
+      
+        <b>Инициатор:</b> {{task.owner.fio}}
+        <br>
+        <b>Организация:</b> {{task.owner.company}}
+        <br>
+
+
+        <b>Телефон:</b> {{task.owner.telephone}}
+        <p>
+          <b>Статус:</b> {{task.status.status}}</p>
+        <span *ngIf="task.urgency.urgency">
+          <p>
+            <b>Срочность:</b> {{task.urgency.urgency}}</p>
+        </span>
+        <p>
+          <b>Дата и время:</b> {{task.created}}</p>
     </div>
-    
-    <div *ngIf="edClick==true">
-    	<button ion-button block (click)="ChangeStat()">    	
+
+    <div *ngIf="edClick == true">
+      <button ion-button block (click)="ChangeStat()">
         Выполнено
-    	</button>
+      </button>
     </div>
-	</ion-toolbar>
+  </ion-toolbar>
 
-	<br>
+  <br>
 
-	<ion-toolbar >
-		<ion-list insert>
-        <ion-item  *ngFor="let task of taskD">
-        	
-          
-          <div padding [innerHTML]="task.comBody"></div>
-        </ion-item>
-        <ion-item>
-          
-        </ion-item>
-    </ion-list> 
-    
-    <div *ngIf="edClick==true">
+  <ion-toolbar>
+    <div *ngFor="let task of taskD">
+      <div padding [innerHTML]="task.comBody" *ngIf="edClick==false"></div>
+    </div>
 
+    <div *ngIf="edClick === true">
       <text-editor [formControlItem]="item"></text-editor>
-      <button ion-button block (click)="AddComment($event, item.value)">    	
+      <button ion-button block (click)="AddComment($event, item.value)">
         Написать комментарий
-    	</button>
+      </button>
     </div>
-	</ion-toolbar>
+  </ion-toolbar>
 
-		<br>
+  <br>
 
-	<ion-toolbar>
-		<ion-row >
+  <ion-toolbar *ngIf="stats != statusTask">
+    <ion-row>
       <ion-grid>
         <ion-row justify-content-center>
-          <!-- <ion-col>
-            <button ion-button color="secondary" block icon-start (click)="TakeToWork()">          
-              <b>Взять в работу</b>
-            </button> 
-          </ion-col>-->
+
 
           <ion-col>
-            <button ion-button block (click)="EditTask()">     
+            <button ion-button block (click)="EditTask()">
               Редактировать
             </button>
           </ion-col>
+
+          <ion-col *ngIf="stats === statExec">
+            <button ion-button color="secondary" block icon-start (click)="TakeToWork()">
+              <b>Взять в работу</b>
+            </button>
+          </ion-col>
+
         </ion-row>
       </ion-grid>
     </ion-row>
-	</ion-toolbar>
+  </ion-toolbar>
 
 </ion-content>
