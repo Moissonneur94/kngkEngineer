@@ -14,6 +14,7 @@ import { MyListTaskComponent } from "../components/myListTask/myListTask";
 import { EditTaskComponent } from "../components/editTask/editTask";
 // import { SettingsComponent } from "../components/settings/settings";
 import { HelpComponent } from "../components/help/help";
+import { TextEditorComponent } from "../components/textEditor/textEditor";
 
 // import { CTask, CUser, CUrgency, CStatus, CCategory, CService }   from './classes';
 
@@ -32,7 +33,7 @@ import { AuthenticationInterceptor } from "./service/authenticationInterceptor.s
 import { AuthenticatedSoapService } from "./service/authenticatedSoap.service";
 import { GetDataService } from "./service/getData.service";
 
-import { TextEditorComponent } from "../components/textEditor/textEditor";
+
 
 @NgModule({
   declarations: [

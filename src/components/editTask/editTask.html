@@ -35,13 +35,13 @@
 
 
         <b>Телефон:</b> {{task.owner.telephone}}
-        <p>
-          <b>Статус:</b> {{task.status.status}}</p>
+        <br>
+        <b>Статус:</b> {{task.status.status}}
         <span *ngIf="task.urgency.urgency">
           <p>
             <b>Срочность:</b> {{task.urgency.urgency}}</p>
         </span>
-        <p>
+        <br>
           <b>Дата и время:</b> {{task.created}}</p>
     </div>
 

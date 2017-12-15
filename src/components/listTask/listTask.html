@@ -26,26 +26,29 @@
     <ion-label>В работе</ion-label>
     <ion-checkbox color="blue" [(ngModel)]="inWork" (click)="getTask()"></ion-checkbox>
   </ion-item>
+  
+    <a href="#" ion-item color="white" *ngFor="let task of tasks" (click)="itemTapped($event, task.id, task.usageType, task.status.status, task.owner.avatar)" >
+      <h2>{{task.subject}}</h2>
+      <p style="margin: 15px 0 0 0;">
+        <img src="data:image/jpg;base64,{{task.owner.avatar}}" class="leftimg">
+        Номер: {{task.id}}<br>
+      <Дата: {{task.created}}<br>
+      Статус: {{task.status.status}}<br>
+      
+        Инициатор: {{task.owner.fio}}</p>
+      <p>Кому назначена: {{task.executor.fio}}</p>
+      
+      <span *ngIf="task.urgency.urgency">
+        <p>Срочность: {{task.urgency.urgency}}</p>
+      </span>
+  
+     <!--  <div padding [innerHTML]="task.body"></div> -->
+       <!-- <div > {{task.usageType}}</div>  -->
+      <!-- <div> {{task.service.avatar}}</div> -->
+    </a>
 
-  <a href="#" ion-item color="white" *ngFor="let task of tasks" (click)="itemTapped($event, task.id, task.usageType, task.status.status, task.owner.avatar)" >
-    <h2>{{task.subject}}</h2>
-    <p style="margin: 15px 0 0 0;">
-      <img src="data:image/jpg;base64,{{task.owner.avatar}}" class="leftimg">
-      Номер: {{task.id}}<br>
-    <Дата: {{task.created}}<br>
-    Статус: {{task.status.status}}<br>
-    
-      Инициатор: {{task.owner.fio}}</p>
-    <p>Кому назначена: {{task.executor.fio}}</p>
-    
-    <span *ngIf="task.urgency.urgency">
-      <p>Срочность: {{task.urgency.urgency}}</p>
-    </span>
-
-   <!--  <div padding [innerHTML]="task.body"></div> -->
-     <!-- <div > {{task.usageType}}</div>  -->
-    <!-- <div> {{task.service.avatar}}</div> -->
-  </a>
+  
+  
 
   
 
