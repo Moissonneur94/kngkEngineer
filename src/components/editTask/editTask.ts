@@ -70,8 +70,6 @@ export class EditTaskComponent implements OnInit {
     this.stats = navParams.get("stats");
     this.myPage = navParams.get("myPages");
 
-
-
     // console.log(this.nomer);
     // console.log(this.typeOfReq);
   }
