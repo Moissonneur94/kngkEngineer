@@ -10,9 +10,9 @@ import { HomeComponent } from "../components/home/home";
 import { ListTaskComponent } from "../components/listTask/listTask";
 import { CreateTaskComponent } from "../components/createTask/createTask";
 import { MyListTaskComponent } from "../components/myListTask/myListTask";
-import { SearchComponent } from "../components/search/search";
+// import { SearchComponent } from "../components/search/search";
 import { EditTaskComponent } from "../components/editTask/editTask";
-import { SettingsComponent } from "../components/settings/settings";
+// import { SettingsComponent } from "../components/settings/settings";
 import { HelpComponent } from "../components/help/help";
 
 // import { CTask, CUser, CUrgency, CStatus, CCategory, CService }   from './classes';
@@ -42,9 +42,9 @@ import { TextEditorComponent } from "../components/textEditor/textEditor";
     LoginComponent,
     CreateTaskComponent,
     MyListTaskComponent,
-    SearchComponent,
+    // SearchComponent,
     EditTaskComponent,
-    SettingsComponent,
+    // SettingsComponent,
     HelpComponent,
     TextEditorComponent
   ],
