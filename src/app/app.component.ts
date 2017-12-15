@@ -19,8 +19,7 @@ import { MyListTaskComponent } from "../components/myListTask/myListTask";
 export class KNGKEngineer {
   @ViewChild(Nav) public nav: Nav;
 
-  public rootPage: any = LoginComponent; // HomeComponent;
-  public lastPage: any = HomeComponent;
+  public rootPage: any = HomeComponent;
 
   public pages: Array<{ title: string; component: any }>;
 
