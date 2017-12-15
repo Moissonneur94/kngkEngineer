@@ -32,4 +32,5 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 KNGKengineer.sublime-workspace
 KNGKengineer.sublime-project
-.sourcemaps/
+.sourcemaps/*
+
