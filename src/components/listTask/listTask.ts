@@ -114,5 +114,6 @@ export class ListTaskComponent implements OnInit {
     //     }
     //   }
     // );
+    this.doRefresh();
   }
 }
