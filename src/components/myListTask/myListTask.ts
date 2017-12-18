@@ -90,15 +90,15 @@ export class MyListTaskComponent implements OnInit {
 
   public ChangeStat($event, id, req) {
     
-    this.data.CancelTask(id, req).subscribe(
-      result => {
-        this.cancelTask = result;
-      },
-      error => {
-        debugger;
-        console.log("CancelTask(error => ...)", error);
-      }
-    );
+    // this.data.CancelTask(id, req).subscribe(
+    //   result => {
+    //     this.cancelTask = result;
+    //   },
+    //   error => {
+    //     debugger;
+    //     console.log("CancelTask(error => ...)", error);
+    //   }
+    // );
     this.doRefresh();
   }
 }
