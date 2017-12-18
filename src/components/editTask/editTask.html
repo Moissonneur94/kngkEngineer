@@ -27,14 +27,7 @@
         <img src="data:image/jpg;base64,{{task.owner.avatar}}" width="100" heigth="100" class="leftimg">
         <b>Инициатор:</b> {{task.owner.fio}}<br>
         <b>Организация:</b> {{task.owner.company}}<br>
-      
-        
-        <b>Организация:</b> {{task.owner.company}}
-        <br>
-
-
-        <b>Телефон:</b> {{task.owner.telephone}}
-        <br>
+        <b>Телефон:</b> {{task.owner.telephone}}<br>
         <b>Статус:</b> {{task.status.status}}
         <span *ngIf="task.urgency.urgency">
           <p>

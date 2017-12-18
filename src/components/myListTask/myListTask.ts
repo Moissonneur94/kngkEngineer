@@ -99,5 +99,6 @@ export class MyListTaskComponent implements OnInit {
     //     console.log("CancelTask(error => ...)", error);
     //   }
     // );
+    this.doRefresh();
   }
 }
