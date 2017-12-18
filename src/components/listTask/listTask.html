@@ -63,7 +63,7 @@
               </span>
               </p>
         </ion-item>
-        <ion-item-options side=left>
+        <ion-item-options side=left (ionSwipe)="ChangeStat($event, task.id, task.usageType)">
           <button ion-button color="danger" (click)="ChangeStat($event, task.id, task.usageType)">
             <ion-icon name="md-checkmark-circle"></ion-icon>
             Принять к исполнению
