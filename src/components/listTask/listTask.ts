@@ -3,7 +3,8 @@ import {
   LoadingController,
   Loading,
   NavController,
-  NavParams
+  NavParams,
+  Events
 } from "ionic-angular";
 
 import { GetDataService } from "../../app/service/getData.service";
@@ -23,8 +24,8 @@ import {
   templateUrl: "listTask.html"
 })
 export class ListTaskComponent implements OnInit {
-  private tasks: Array<CTask> = [];
-  private inWork: boolean = true;
+  public tasks: Array<CTask> = [];
+  public inWork: boolean = true;
 
   private loader: Loading;
 
@@ -33,6 +34,7 @@ export class ListTaskComponent implements OnInit {
   // public stats: string;
 
   constructor(
+    public events: Events,
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
@@ -76,12 +78,41 @@ export class ListTaskComponent implements OnInit {
     );
   }
 
-  public itemTapped(event, id, req, status, bases) {
+  public itemTapped(event, id, req, status) {
     this.navCtrl.push(EditTaskComponent, {
       nomer: id,
       typeOfReq: req,
       stats: status,
       myPages: "ListTaskComponent"
     });
+  }
+
+  public ChangeStat(refresher?: any) {
+    // if (undefined === refresher) {
+    //   this.loader = this.loadingCtrl.create({
+    //     content: "Пожалуйста подождите пока данные подгружаются..."
+    //   });
+    //   this.loader.present();
+    // }
+
+    // this.data.CancelTask(this.nomer, this.typeOfReq).subscribe(
+    //   result => {
+    //     this.cancelTask = result;
+    //     if (undefined === refresher) {
+    //       this.loader.dismiss();
+    //     } else {
+    //       refresher.complete();
+    //     }
+    //   },
+    //   error => {
+    //     debugger;
+    //     console.log("CancelTask(error => ...)", error);
+    //     if (undefined === refresher) {
+    //       this.loader.dismiss();
+    //     } else {
+    //       refresher.complete();
+    //     }
+    //   }
+    // );
   }
 }

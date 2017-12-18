@@ -223,7 +223,7 @@ export class GetDataService {
                       "object" !== typeof d["инициатор"]
                         ? new CUser({})
                         : new CUser({
-                            avatar: d["инициатор"]["аватар"].replace(/\s/g, "").replace(/\n/g, ""),
+                            avatar: d["инициатор"]["аватар"].replace(/\n/g, " "),
                             position: d["инициатор"]["должность"],
                             channelTelephone:
                               d["инициатор"]["channelTelephone"],
@@ -278,9 +278,7 @@ export class GetDataService {
               });
             } else {
               const d =
-                data["envelope"]["body"]["kngk_gettaskresponse"]["return"][
-                  "задача"
-                ];
+                data["envelope"]["body"]["kngk_gettaskresponse"]["return"]["задача"];
 
               self.tasks.push(
                 new CTask({
@@ -366,7 +364,6 @@ export class GetDataService {
             this.taskD.push(
               new CTask({
                 created: desc["дата"]["_"].replace("T", " "),
-
                 owner:
                   "object" !== typeof desc["инициатор"]
                     ? new CUser({})

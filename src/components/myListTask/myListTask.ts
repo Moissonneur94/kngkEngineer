@@ -16,7 +16,8 @@ import {
   CUrgency,
   CStatus,
   CCategory,
-  CService
+  CService, 
+  CCancelTask 
 } from "../../app/classes";
 
 @Component({
@@ -26,9 +27,10 @@ import {
 export class MyListTaskComponent implements OnInit {
   public tasks: Array<CTask> = [];
   public inWork: boolean = true;
+  private cancelTask: Array<CCancelTask>;
 
   private loader: Loading;
-  public base64:string;
+  
 
   constructor(
     public events: Events,
@@ -62,7 +64,6 @@ export class MyListTaskComponent implements OnInit {
         } else {
           refresher.complete();
         }
-
       },
       error => {
         debugger;
@@ -85,5 +86,18 @@ export class MyListTaskComponent implements OnInit {
       stats: status,
       myPages: "MyListTaskComponent"
     });
+  }
+
+  public ChangeStat($event, id, req) {
+    
+    // this.data.CancelTask(id, req).subscribe(
+    //   result => {
+    //     this.cancelTask = result;
+    //   },
+    //   error => {
+    //     debugger;
+    //     console.log("CancelTask(error => ...)", error);
+    //   }
+    // );
   }
 }
