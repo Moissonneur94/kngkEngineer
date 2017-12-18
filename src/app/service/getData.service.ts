@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
+import * as CONSTANTS from "./constants";
 import { AuthenticatedSoapService } from "./authenticatedSoap.service";
 
 import {
@@ -124,6 +125,14 @@ export class GetDataService {
         })
         .subscribe(
           data => {
+            if (
+              typeof data["envelope"]["body"]["getuserresponse"]["return"][
+                "аватар"
+              ] !== "string"
+            ) {
+              data["envelope"]["body"]["getuserresponse"]["return"]["аватар"] =
+                CONSTANTS.UNKNOWN_PIC;
+            }
             this.cuser = new CUser({
               fio:
                 data["envelope"]["body"]["getuserresponse"]["return"]["фио"][
@@ -216,6 +225,9 @@ export class GetDataService {
               data["envelope"]["body"]["kngk_gettaskresponse"]["return"][
                 "задача"
               ].forEach(d => {
+                if (typeof d["инициатор"]["аватар"] !== "string") {
+                  d["инициатор"]["аватар"] = CONSTANTS.UNKNOWN_PIC;
+                }
                 self.tasks.push(
                   new CTask({
                     created: d["дата"].replace("T", " "),
@@ -223,7 +235,7 @@ export class GetDataService {
                       "object" !== typeof d["инициатор"]
                         ? new CUser({})
                         : new CUser({
-                            avatar: d["инициатор"]["аватар"].replace(/\n/g, " "),
+                            avatar: d["инициатор"]["аватар"].replace(/\s/g, "").replace(/\n/g, ""),
                             position: d["инициатор"]["должность"],
                             channelTelephone:
                               d["инициатор"]["channelTelephone"],
@@ -361,6 +373,9 @@ export class GetDataService {
               data["envelope"]["body"]["kngk_gettaskdescriptionresponse"][
                 "return"
               ];
+              if (typeof desc["инициатор"]["аватар"] !== "string") {
+                desc["инициатор"]["аватар"] = CONSTANTS.UNKNOWN_PIC;
+              }
             this.taskD.push(
               new CTask({
                 created: desc["дата"]["_"].replace("T", " "),
@@ -460,9 +475,13 @@ export class GetDataService {
         })
         .subscribe(
           data => {
+            
             this.taskD = [];
             const desc =
               data["envelope"]["body"]["kngk_edittaskresponse"]["return"];
+              if (typeof desc["инициатор"]["аватар"] !== "string") {
+                desc["инициатор"]["аватар"] = CONSTANTS.UNKNOWN_PIC;
+              }
             this.taskD.push(
               new CTask({
                 created: desc["дата"]["_"].replace("T", " "),
@@ -669,6 +688,9 @@ export class GetDataService {
             this.cancelTask = [];
             const ct =
               data["envelope"]["body"]["kngk_canceltaskresponse"]["return"];
+              if (typeof ct["инициатор"]["аватар"] !== "string") {
+                ct["инициатор"]["аватар"] = CONSTANTS.UNKNOWN_PIC;
+              }
             this.cancelTask.push(
               new CCancelTask({
                 created: ct["дата"]["_"].replace("T", " "),
