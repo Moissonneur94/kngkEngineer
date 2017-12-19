@@ -87,33 +87,21 @@ export class ListTaskComponent implements OnInit {
     });
   }
 
-  public ChangeStat(refresher?: any) {
-    // if (undefined === refresher) {
-    //   this.loader = this.loadingCtrl.create({
-    //     content: "Пожалуйста подождите пока данные подгружаются..."
-    //   });
-    //   this.loader.present();
-    // }
-
-    // this.data.CancelTask(this.nomer, this.typeOfReq).subscribe(
+  public ChangeStat($event, id, req) {
+    // this.data.CancelTask(id, req).subscribe(
     //   result => {
     //     this.cancelTask = result;
-    //     if (undefined === refresher) {
-    //       this.loader.dismiss();
-    //     } else {
-    //       refresher.complete();
-    //     }
     //   },
     //   error => {
     //     debugger;
     //     console.log("CancelTask(error => ...)", error);
-    //     if (undefined === refresher) {
-    //       this.loader.dismiss();
-    //     } else {
-    //       refresher.complete();
-    //     }
     //   }
     // );
+    this.doRefresh();
+  }
+
+  
+  public TTExec($event) {
     this.doRefresh();
   }
 }
