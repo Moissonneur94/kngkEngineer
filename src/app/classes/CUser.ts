@@ -22,4 +22,6 @@ export class CUser {
     this.departament = object["departament"];
     this.manager = object["manager"];
   }
+
+  
 }
