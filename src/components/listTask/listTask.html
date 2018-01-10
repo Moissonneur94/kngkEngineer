@@ -7,9 +7,12 @@
       Все заявки
     </ion-title>
   </ion-navbar>
+
 </ion-header>
 
+
 <ion-content>
+
   <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content
       pullingIcon="arrow-dropdown"
@@ -23,35 +26,36 @@
     <ion-label>В работе</ion-label>
     <ion-checkbox color="blue" [(ngModel)]="inWork" (click)="getTask()"></ion-checkbox>
   </ion-item>
-    <ion-list>
-      <ion-item-sliding *ngFor="let task of tasks" #item>
-        <ion-item (click)="itemTapped($event, task.id, task.usageType, task.status.status)" >
-            <h2 ion-text>{{task.subject}}</h2>
-              <p style="margin: 15px 0 0 0;">
-                <img src="data:image/jpg;base64,{{task.owner.avatar}}" class="leftimg">
-                Номер: {{task.id}}<br>
-                Дата: {{task.created}}<br>
-                Статус: {{task.status.status}}<br>
-                Инициатор: {{task.owner.fio}}<br>
-                Кому назначена: {{task.executor.fio}}<br>
-              <span *ngIf="task.urgency.urgency">
-                <p>Срочность: {{task.urgency.urgency}}</p>
-              </span>
-              </p>
-        </ion-item>
-        <ion-item-options side=left (ionSwipe)="TTExec($event)">
-          <button ion-button color="danger" (click)="TTExec($event)">
-            <ion-icon name="md-checkmark-circle"></ion-icon>
-            Принять к исполнению
-          </button>
-        </ion-item-options>
 
-        <!-- <ion-item-options (ionSwipe)="ChangeStat($event, task.id, task.usageType)" *ngIf="task.executor.fio == UserName">
-          <button ion-button color="secondary" (click)="ChangeStat($event, task.id, task.usageType)">
-            <ion-icon name="md-checkmark-circle"></ion-icon>
-            Выполнена
-          </button>
-        </ion-item-options> -->
-      </ion-item-sliding>
-    </ion-list>
+  <ion-list>
+    <ion-item-sliding *ngFor="let task of tasks" #item>
+      <ion-item (click)="itemTapped($event, task.id, task.usageType, task.status.status)" >
+          <h2 ion-text>{{task.subject}}</h2>
+            <p style="margin: 15px 0 0 0;">
+              <img src="data:image/jpg;base64,{{task.owner.avatar}}" class="leftimg">
+              Номер: {{task.id}}<br>
+              Дата: {{task.created}}<br>
+              Статус: {{task.status.status}}<br>
+              Инициатор: {{task.owner.fio}}<br>
+              Кому назначена: {{task.executor.fio}}<br>
+            <span *ngIf="task.urgency.urgency">
+              <p>Срочность: {{task.urgency.urgency}}</p>
+            </span>
+            </p>
+      </ion-item>
+      <ion-item-options side=left>
+        <button ion-button color="danger" (click)="TTExec($event, task.id, task.usageType)">
+          <ion-icon name="md-checkmark-circle"></ion-icon>
+          Принять к исполнению
+        </button>
+      </ion-item-options>
+
+      <!-- <ion-item-options side=right>
+        <button ion-button color="secondary" (click)="ChangeStat($event, task.id, task.usageType)">
+          <ion-icon name="md-checkmark-circle"></ion-icon>
+          Выполнена
+        </button>
+      </ion-item-options> -->
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   public user: string = "";
   public password: string = "";
   public saveUser: boolean = false;
+  public userLogged: boolean = true;
 
   public errorHeader: string = null;
   public errorText: string = null;

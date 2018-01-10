@@ -20,6 +20,7 @@ export class KNGKEngineer {
   @ViewChild(Nav) public nav: Nav;
 
   public rootPage: any = LoginComponent;
+  public homePage: any = HomeComponent;
 
   public pages: Array<{ title: string; component: any }>;
 
